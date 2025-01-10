@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
          pageEncoding="UTF-8" %>
+<c:set var="root" value="${pageContext.request.contextPath}/"/>
 <!DOCTYPE html>
 <head>
     <title>SpringMVC</title>
@@ -42,7 +43,10 @@
                     <td class="d-md-table-cell">${obj.subject_day}</td>
                     <td class="d-md-table-cell">${obj.subject_time}</td>
                     <td class="d-md-table-cell">
-                        <a href="#" class="btn btn-secondary">신청</a>
+                        <form:form action="${root}apply_pro" method="post" modelAttribute="subjectBean">
+                            <input type="hidden" name="subject_num" value="${obj.subject_num}"/>
+                            <button type="submit" class="btn btn-secondary">신청</button>
+                        </form:form>
                     </td>
                 </tr>
             </c:forEach>
