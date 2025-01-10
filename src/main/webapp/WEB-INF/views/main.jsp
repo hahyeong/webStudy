@@ -57,13 +57,13 @@
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
-                <th class="d-md-table-cell">과목번호</th>
-                <th class="d-md-table-cell">과목명</th>
-                <th class="d-md-table-cell">학점</th>
-                <th class="d-md-table-cell">수강인원</th>
-                <th class="d-md-table-cell">강의요일</th>
-                <th class="d-md-table-cell">강의시간</th>
-                <th class="d-md-table-cell">수강신청</th>
+                <th class="d-md-table-cell" width="10%">과목번호</th>
+                <th class="d-md-table-cell" width="30%">과목명</th>
+                <th class="d-md-table-cell" width="10%">학점</th>
+                <th class="d-md-table-cell" width="10%">수강인원</th>
+                <th class="d-md-table-cell" width="15%">강의요일</th>
+                <th class="d-md-table-cell" width="15%">강의시간</th>
+                <th class="d-md-table-cell" width="10%">수강신청</th>
             </tr>
             </thead>
             <tbody>
