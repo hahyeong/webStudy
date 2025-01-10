@@ -23,9 +23,9 @@ public class SubjectController {
     @GetMapping("/list")
     public String list(Model model) {
         List<Subject> allSubject = subjectService.findAllSubject();
-        List<Subject> allSubjectByUserId = subjectService.findAllSubjectByUserId(loginBean.getStudent_num());
+//        List<Subject> allSubjectByUserId = subjectService.findAllSubjectByUserId(loginBean.getStudent_num());
         model.addAttribute("subjectBean", allSubject);
-        model.addAttribute("allSubjectByUserIdBean", allSubjectByUserId);
+//        model.addAttribute("allSubjectByUserIdBean", allSubjectByUserId);
         return "main";
     }
 }

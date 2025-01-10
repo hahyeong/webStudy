@@ -5,5 +5,5 @@
 <c:set var="root" value="${pageContext.request.contextPath }/" />
 
 <script>
-    location.href='${root}/login?fail=true'
+    location.href='${root}login?fail=true'
 </script>

@@ -17,7 +17,7 @@ public class SubjectService {
         return subjectDao.findAllSubject();
     }
 
-    public List<Subject> findAllSubjectByUserId(int student_num) {
-        return subjectDao.findAllSubjectByUserId(student_num);
-    }
+//    public List<Subject> findAllSubjectByUserId(int student_num) {
+//        return subjectDao.findAllSubjectByUserId(student_num);
+//    }
 }
