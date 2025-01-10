@@ -2,20 +2,16 @@ package kr.bit.bean;
 
 public class Student {
     private int student_num;
-    private String student_name;
+
     private String student_id;
     private String student_pw;
+    private String student_name;
 
-    //로그인 여부 판별용
-    private boolean isLogin;
 
-    public Student() {}
+    private boolean studentLogin;
 
-    public Student(int student_num, String student_name, String student_id, String student_pw) {
-        this.student_num = student_num;
-        this.student_name = student_name;
-        this.student_id = student_id;
-        this.student_pw = student_pw;
+    public Student() {
+        this.studentLogin = false;
     }
 
     public int getStudent_num() {
@@ -24,14 +20,6 @@ public class Student {
 
     public void setStudent_num(int student_num) {
         this.student_num = student_num;
-    }
-
-    public String getStudent_name() {
-        return student_name;
-    }
-
-    public void setStudent_name(String student_name) {
-        this.student_name = student_name;
     }
 
     public String getStudent_id() {
@@ -50,11 +38,19 @@ public class Student {
         this.student_pw = student_pw;
     }
 
-    public boolean isLogin() {
-        return isLogin;
+    public String getStudent_name() {
+        return student_name;
     }
 
-    public void setLogin(boolean login) {
-        isLogin = login;
+    public void setStudent_name(String student_name) {
+        this.student_name = student_name;
+    }
+
+    public boolean isStudentLogin() {
+        return studentLogin;
+    }
+
+    public void setStudentLogin(boolean studentLogin) {
+        this.studentLogin = studentLogin;
     }
 }
