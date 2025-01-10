@@ -23,20 +23,15 @@ public class SubjectController {
     private Student loginBean;
 
     @PostMapping("/apply_pro")
-    public String getApplySubject(@RequestParam("student_num") int student_num, Model model) {
-        List<Subject> subject_apply = subjectService.getApplySubject(student_num);
-        model.addAttribute("subject_apply", subject_apply);
-        return "/main";
-    }
-
-    @PostMapping("/apply_pro")
     public String insertEnroll(@RequestParam("subject_num") int subject_num,
                                @RequestParam("student_num") int student_num, Model model) {
+        List<Subject> subject_apply = subjectService.getApplySubject(student_num);
         model.addAttribute("subject_num", subject_num);
         model.addAttribute("student_num", student_num);
+        model.addAttribute("subject_apply", subject_apply);
         subjectService.insertEnroll(subject_num, student_num);
         subjectService.updateSubjectCurStu(subject_num);
-        return "/main";
+        return "main";
     }
 
     @GetMapping("/list")

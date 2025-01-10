@@ -42,7 +42,7 @@ public class StudentController {
         studentService.getLoginStudent(loginProcBean);
 
         if(loginBean.isStudentLogin() == true) {
-            return "redirect:/main";
+            return "redirect:/list";
         } else {
             return "login_fail";
         }
