@@ -1,6 +1,7 @@
 package kr.bit.config;
 
 import kr.bit.bean.Student;
+import kr.bit.interceptor.LoginInterceptor;
 import kr.bit.mapper.SubjectMapper;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -8,10 +9,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -73,4 +71,13 @@ public class ServletAppContext implements WebMvcConfigurer {
         registry.addResourceHandler("/**").addResourceLocations("/resources/");
     }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        WebMvcConfigurer.super.addInterceptors(registry);
+
+        LoginInterceptor loginInterceptor = new LoginInterceptor(loginSession);
+        InterceptorRegistration registration = registry.addInterceptor(loginInterceptor);
+        registration.addPathPatterns("/main");
+
+    }
 }

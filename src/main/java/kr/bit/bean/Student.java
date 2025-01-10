@@ -6,6 +6,9 @@ public class Student {
     private String student_id;
     private String student_pw;
 
+    //로그인 여부 판별용
+    private boolean isLogin;
+
     public Student() {}
 
     public Student(int student_num, String student_name, String student_id, String student_pw) {
@@ -45,5 +48,13 @@ public class Student {
 
     public void setStudent_pw(String student_pw) {
         this.student_pw = student_pw;
+    }
+
+    public boolean isLogin() {
+        return isLogin;
+    }
+
+    public void setLogin(boolean login) {
+        isLogin = login;
     }
 }
