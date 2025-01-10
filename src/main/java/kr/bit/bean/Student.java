@@ -2,11 +2,9 @@ package kr.bit.bean;
 
 public class Student {
     private int student_num;
-
     private String student_id;
     private String student_pw;
     private String student_name;
-
 
     private boolean studentLogin;
 

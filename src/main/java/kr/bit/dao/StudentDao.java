@@ -11,7 +11,7 @@ public class StudentDao {
     @Autowired
     private StudentMapper studentMapper;
 
-//    public Student getLoginStudent(Student loginProcBean) {
-//        return studentMapper.getLoginStudent(loginProcBean);
-//    }
+    public Student getLoginStudent(Student loginProcBean) {
+        return studentMapper.getLoginStudent(loginProcBean);
+    }
 }
