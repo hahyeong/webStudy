@@ -43,7 +43,7 @@
                     <td class="d-md-table-cell">${obj.subject_day}</td>
                     <td class="d-md-table-cell">${obj.subject_time}</td>
                     <td class="d-md-table-cell">
-                        <form:form action="${root}apply_pro" method="post" modelAttribute="subjectBean">
+                        <form:form action="${root}apply_pro" method="post">
                             <input type="hidden" name="subject_num" value="${obj.subject_num}"/>
                             <button type="submit" class="btn btn-secondary">신청</button>
                         </form:form>
