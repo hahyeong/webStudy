@@ -13,7 +13,7 @@
 <body>
 <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-        <a href="#" class="btn btn-outline-success">로그아웃</a>
+        <a href="${root}logout" class="btn btn-outline-success">로그아웃</a>
     </div>
 </nav>
 
@@ -48,49 +48,6 @@
             </c:forEach>
             </tbody>
         </table>
-
-        <!--페이징-->
-<%--        <div class="d-none d-md-block">--%>
-<%--            <ul class="pagination justify-content-center">--%>
-<%--                <c:choose>--%>
-<%--                    <c:when test="${pBean.prePage <= 0}">--%>
-<%--                        <li class="page-item disabled"><a href="#" class="page-link">이전</a></li>--%>
-<%--                    </c:when>--%>
-<%--                    <c:otherwise>--%>
-<%--                        <li class="page-item">--%>
-<%--                            <a href="${root}board/main?board_info_idx=${board_info_idx}&page=${pBean.prePage}" class="page-link">이전</a>--%>
-<%--                        </li>--%>
-<%--                    </c:otherwise>--%>
-<%--                </c:choose>--%>
-
-<%--                <c:forEach var='idx' begin="${pBean.min}" end='${pBean.max}'>--%>
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${idx == pBean.currentPage}">--%>
-<%--                            <li class="page-item active">--%>
-<%--                                <a href="${root}board/main?board_info_idx=${board_info_idx}&page=${idx}" class="page-link">${idx}</a>--%>
-<%--                            </li>--%>
-<%--                        </c:when>--%>
-<%--                        <c:otherwise>--%>
-<%--                            <li class="page-item"><a--%>
-<%--                                    href="${root}board/main?board_info_idx=${board_info_idx}&page=${idx}"--%>
-<%--                                    class="page-link">${idx}</a></li>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
-<%--                </c:forEach>--%>
-
-<%--                <c:choose>--%>
-<%--                    <c:when test="${pBean.max >= pBean.pageCnt}">--%>
-<%--                        <li class="page-item disabled"><a href="#" class="page-link">다음</a></li>--%>
-<%--                    </c:when>--%>
-<%--                    <c:otherwise>--%>
-<%--                        <li class="page-item">--%>
-<%--                            <a href="${root}board/main?board_info_idx=${board_info_idx}&page=${pBean.nextPage}" class="page-link">다음</a>--%>
-<%--                        </li>--%>
-<%--                    </c:otherwise>--%>
-<%--                </c:choose>--%>
-<%--            </ul>--%>
-<%--        </div>--%>
-
     </div>
 </div>
 

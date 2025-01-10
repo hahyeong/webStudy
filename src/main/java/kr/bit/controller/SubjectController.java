@@ -17,13 +17,13 @@ public class SubjectController {
     @Autowired
     private SubjectService subjectService;
 
-    @Resource(name = "loginSession")
-    private Student loginSession;
+    @Resource(name = "loginBean")
+    private Student loginBean;
 
     @GetMapping("/list")
     public String list(Model model) {
         List<Subject> allSubject = subjectService.findAllSubject();
-        List<Subject> allSubjectByUserId = subjectService.findAllSubjectByUserId(loginSession.getStudent_num());
+        List<Subject> allSubjectByUserId = subjectService.findAllSubjectByUserId(loginBean.getStudent_num());
         model.addAttribute("subjectBean", allSubject);
         model.addAttribute("allSubjectByUserIdBean", allSubjectByUserId);
         return "main";
