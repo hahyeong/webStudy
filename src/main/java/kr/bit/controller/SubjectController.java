@@ -17,6 +17,9 @@ public class SubjectController {
 
     @Autowired
     private SubjectService subjectService;
+  
+  @Resource(name = "loginBean")
+    private Student loginBean;
 
     @PostMapping("/apply_pro")
     public String getApplySubject(@RequestParam("student_num") int student_num, Model model) {
@@ -33,5 +36,13 @@ public class SubjectController {
         subjectService.updateSubjectCurStu(subject_num);
         return "/main";
     }
+  
+  @GetMapping("/list")
+    public String list(Model model) {
+        List<Subject> allSubject = subjectService.findAllSubject();
+//         List<Subject> allSubjectByUserId = subjectService.findAllSubjectByUserId(loginBean.getStudent_num());
+        model.addAttribute("subjectBean", allSubject);
+//         model.addAttribute("allSubjectByUserIdBean", allSubjectByUserId);
+        return "main";
 
 }
