@@ -14,6 +14,10 @@ public class SubjectDao {
     @Autowired
     private SubjectMapper subjectMapper;
 
+    public List<Subject> findAllSubject() {
+        return subjectMapper.findAllSubject();
+    }
+
     public List<Subject> getApplySubject(int subject_id){
         List<Subject> subject_apply= subjectMapper.getApplySubject(subject_id);
         return subject_apply;
