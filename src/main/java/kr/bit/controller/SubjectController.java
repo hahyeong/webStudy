@@ -25,8 +25,7 @@ public class SubjectController {
     private Student loginBean;
 
     @PostMapping("/apply_pro")
-    public String insertEnroll(@RequestParam("subject_num") int subject_num, HttpServletRequest request) {
-        HttpSession session = request.getSession();
+    public String insertEnroll(@RequestParam("subject_num") int subject_num) {
         System.out.println("loginBean = " + loginBean.getStudent_num());
         System.out.println("subjectBean = " + subject_num);
         subjectService.insertEnroll(loginBean.getStudent_num(), subject_num);
