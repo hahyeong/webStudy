@@ -7,6 +7,7 @@ public class Student {
     private String student_pw;
     private String student_name;
 
+
     private boolean studentLogin;
 
     public Student() {
