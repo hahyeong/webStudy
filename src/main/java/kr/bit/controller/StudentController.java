@@ -48,13 +48,13 @@ public class StudentController {
         }
     }
 
-    @GetMapping("/logout")
+    @GetMapping("logout")
     public String logout() {
         loginBean.setStudentLogin(false);
         return "logout";
     }
 
-    @GetMapping("/not_login")
+    @GetMapping("not_login")
     public String not_login() {
         return "not_login";
     }
