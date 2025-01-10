@@ -54,4 +54,8 @@ public class StudentController {
         return "logout";
     }
 
+    @GetMapping("/not_login")
+    public String not_login() {
+        return "not_login";
+    }
 }
