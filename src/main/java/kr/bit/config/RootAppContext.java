@@ -7,9 +7,11 @@ import org.springframework.web.context.annotation.SessionScope;
 
 @Configuration
 public class RootAppContext {
-    @Bean("loginBean")
+
+    @Bean("loginSession")
     @SessionScope
-    public Student loginBean(){
+    public Student loginBean() {
         return new Student();
     }
+
 }
