@@ -26,8 +26,6 @@ public class SubjectController {
 
     @PostMapping("/apply_pro")
     public String insertEnroll(@RequestParam("subject_num") int subject_num) {
-        System.out.println("loginBean = " + loginBean.getStudent_num());
-        System.out.println("subjectBean = " + subject_num);
         subjectService.insertEnroll(loginBean.getStudent_num(), subject_num);
         subjectService.updateSubjectCurStu(subject_num);
         return "redirect:/list";
