@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -26,14 +27,16 @@ public class StudentController {
     public String login(@ModelAttribute("loginProcBean") Student loginProcBean, Model model, @RequestParam(value = "fail", defaultValue = "false") boolean fail) {
         model.addAttribute("loginProcBean", loginProcBean);
         model.addAttribute("fail", fail);
-
+        System.out.println("여기?");
+        // 로그인 빈을 추가하여 JSP에서 사용할 수 있도록 합니다.
         return "login";
     }
 
     @PostMapping("login_proc")
     public String login_proc(@Valid @ModelAttribute("loginProcBean") Student loginProcBean, BindingResult result,
-                             HttpSession session) {
+                             HttpServletRequest request) {
 
+//        System.out.println(result.getObjectName());
         if(result.hasErrors()) {
             return "login";
         }
@@ -41,20 +44,21 @@ public class StudentController {
         studentService.getLoginStudent(loginProcBean);
 
         if(loginBean.isStudentLogin() == true) {
-            session.setAttribute("loginBean", loginBean);
+            HttpSession session = request.getSession();
+            session.setAttribute("loginProcBeanSession", loginBean);
             return "redirect:/list";
         } else {
             return "login_fail";
         }
     }
 
-    @GetMapping("/logout")
+    @GetMapping("logout")
     public String logout() {
         loginBean.setStudentLogin(false);
         return "logout";
     }
 
-    @GetMapping("/not_login")
+    @GetMapping("not_login")
     public String not_login() {
         return "not_login";
     }
