@@ -54,7 +54,7 @@
 <div class="container">
     <div class="card-body">
         <h3 class="card-title text-center">내 강의목록</h3>
-        <table class="table table-hover">
+        <table class="table table-striped table-bordered">
             <thead>
             <tr>
                 <th class="d-md-table-cell">과목번호</th>
