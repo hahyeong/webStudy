@@ -22,7 +22,7 @@ public class SubjectController {
     @Resource(name = "loginBean")
     private Student loginBean;
 
-    @PostMapping("/apply_pro")
+    @GetMapping("/apply_pro")
     public String insertEnroll(@RequestParam("subject_num") int subject_num,
                                @RequestParam("student_num") int student_num, Model model) {
         List<Subject> subject_apply = subjectService.getApplySubject(student_num);
@@ -38,8 +38,15 @@ public class SubjectController {
     public String list(Model model) {
         List<Subject> allSubject = subjectService.findAllSubject();
 //        List<Subject> allSubjectByUserId = subjectService.findAllSubjectByUserId(loginBean.getStudent_num());
+
+        //이거
+        List<Subject> applySubject = subjectService.getApplySubject(1);
+
         model.addAttribute("subjectBean", allSubject);
 //        model.addAttribute("allSubjectByUserIdBean", allSubjectByUserId);
+
+        //이거
+        model.addAttribute("applySubject", applySubject);
         return "main";
     }
 }
