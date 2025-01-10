@@ -11,7 +11,7 @@ import java.util.List;
 public class SubjectService {
 
     @Autowired
-    SubjectDao subjectDao;
+    private SubjectDao subjectDao;
 
     public List<Subject> findAllSubject() {
         return subjectDao.findAllSubject();
