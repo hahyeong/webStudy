@@ -18,12 +18,16 @@ public class SubjectService {
         List <Subject> subject_apply= subjectDao.getApplySubject(student_num);
         return subject_apply;
     }
+
+//    public List<Subject> findAllSubjectByUserId(int student_num) {
+//        return subjectDao.findAllSubjectByUserId(student_num);
+//    }
+
     public void insertEnroll(int student_num, int subject_num){
         subjectDao.insertEnroll(student_num,subject_num);
     }
     public void updateSubjectCurStu(int subject_num){
         subjectDao.updateSubjectCurStu(subject_num);
     }
-
 
 }
