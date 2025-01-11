@@ -28,7 +28,4 @@ public class StudentService {
             loginBean.setStudentLogin(true);
         }
     }
-//    public List<Subject> alreadyAppliedSubject(int student_num){
-//        return studentDao.alreadyAppliedSubject(student_num);
-//    }
 }

@@ -17,9 +17,4 @@ public class StudentDao {
     public Student getLoginStudent(Student loginProcBean) {
         return studentMapper.getLoginStudent(loginProcBean);
     }
-
-//    public List<Subject> alreadyAppliedSubject(int student_num){
-//        return studentMapper.alreadyAppliedSubject(student_num);
-//    }
-
 }

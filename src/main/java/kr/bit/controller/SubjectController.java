@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -20,8 +22,6 @@ public class SubjectController {
 
     @Resource(name = "loginBean")
     private Student loginBean;
-
-
 
     @GetMapping("/apply_pro")
     public String insertEnroll(@RequestParam("subject_num") int subject_num, Model model) {
@@ -35,8 +35,11 @@ public class SubjectController {
     }
 
     @GetMapping("/list")
-    public String list(Model model) {
+    public String list(HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession();
+        Student loginProcBean = (Student) session.getAttribute("loginProcBeanSession");
         List<Subject> allSubject = subjectService.findAllSubject();
+      
 //        List<Subject> allSubjectByUserId = subjectService.findAllSubjectByUserId(loginBean.getStudent_num());
         model.addAttribute("subjectBean", allSubject);
         List<Subject> subject_apply = subjectService.getApplySubject(loginBean.getStudent_num());

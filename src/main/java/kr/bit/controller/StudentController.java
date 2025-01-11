@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -33,14 +34,11 @@ public class StudentController {
 
     @PostMapping("login_proc")
     public String login_proc(@Valid @ModelAttribute("loginProcBean") Student loginProcBean, BindingResult result,HttpSession session) {
-
-//        System.out.println(result.getObjectName());
         if(result.hasErrors()) {
             return "login";
         }
 
         studentService.getLoginStudent(loginProcBean);
-//        studentService.alreadyAppliedSubject(loginProcBean.getStudent_num());
 
         if(loginBean.isStudentLogin() == true) {
             session.setAttribute("loginBean", loginBean);
@@ -50,13 +48,13 @@ public class StudentController {
         }
     }
 
-    @GetMapping("/logout")
+    @GetMapping("logout")
     public String logout() {
         loginBean.setStudentLogin(false);
         return "logout";
     }
 
-    @GetMapping("/not_login")
+    @GetMapping("not_login")
     public String not_login() {
         return "not_login";
     }
