@@ -3,23 +3,11 @@ package kr.bit.bean;
 public class Subject {
     private int subject_num;
     private String subject_name;
-    private double subject_point;
+    private int subject_point;
     private String subject_day;
     private String subject_time;
     private int subject_cur_stu;
     private int subject_max_stu;
-
-    public Subject() {}
-
-    public Subject(int subject_num, String subject_name, double subject_point, String subject_day, String subject_time) {
-        this.subject_num = subject_num;
-        this.subject_name = subject_name;
-        this.subject_point = subject_point;
-        this.subject_day = subject_day;
-        this.subject_time = subject_time;
-        this.subject_cur_stu = 0;
-        this.subject_max_stu = 20;
-    }
 
     public int getSubject_num() {
         return subject_num;
@@ -41,7 +29,7 @@ public class Subject {
         return subject_point;
     }
 
-    public void setSubject_point(double subject_point) {
+    public void setSubject_point(int subject_point) {
         this.subject_point = subject_point;
     }
 

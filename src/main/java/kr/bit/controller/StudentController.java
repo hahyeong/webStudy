@@ -33,10 +33,7 @@ public class StudentController {
     }
 
     @PostMapping("login_proc")
-    public String login_proc(@Valid @ModelAttribute("loginProcBean") Student loginProcBean, BindingResult result,
-                             HttpServletRequest request) {
-
-//        System.out.println(result.getObjectName());
+    public String login_proc(@Valid @ModelAttribute("loginProcBean") Student loginProcBean, BindingResult result,HttpSession session) {
         if(result.hasErrors()) {
             return "login";
         }
@@ -44,8 +41,7 @@ public class StudentController {
         studentService.getLoginStudent(loginProcBean);
 
         if(loginBean.isStudentLogin() == true) {
-            HttpSession session = request.getSession();
-            session.setAttribute("loginProcBeanSession", loginBean);
+            session.setAttribute("loginBean", loginBean);
             return "redirect:/list";
         } else {
             return "login_fail";

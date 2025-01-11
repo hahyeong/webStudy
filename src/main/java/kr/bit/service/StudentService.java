@@ -1,12 +1,14 @@
 package kr.bit.service;
 
 import kr.bit.bean.Student;
+import kr.bit.bean.Subject;
 import kr.bit.dao.StudentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class StudentService {

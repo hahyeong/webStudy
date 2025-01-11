@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
@@ -24,11 +23,15 @@ public class SubjectController {
     @Resource(name = "loginBean")
     private Student loginBean;
 
-    @PostMapping("/apply_pro")
-    public String insertEnroll(@RequestParam("subject_num") int subject_num) {
-        subjectService.insertEnroll(loginBean.getStudent_num(), subject_num);
+    @GetMapping("/apply_pro")
+    public String insertEnroll(@RequestParam("subject_num") int subject_num, Model model) {
+        model.addAttribute("subject_num", subject_num);
+        model.addAttribute("student_num", loginBean.getStudent_num());
+
+        subjectService.insertEnroll( loginBean.getStudent_num(), subject_num);
+
         subjectService.updateSubjectCurStu(subject_num);
-        return "redirect:/list";
+        return "/apply_success";
     }
 
     @GetMapping("/list")
@@ -36,9 +39,26 @@ public class SubjectController {
         HttpSession session = request.getSession();
         Student loginProcBean = (Student) session.getAttribute("loginProcBeanSession");
         List<Subject> allSubject = subjectService.findAllSubject();
-        List<Subject> subject_apply = subjectService.getApplySubject(loginProcBean.getStudent_num());
+      
+//        List<Subject> allSubjectByUserId = subjectService.findAllSubjectByUserId(loginBean.getStudent_num());
         model.addAttribute("subjectBean", allSubject);
-        model.addAttribute("allSubjectByUserIdBean", subject_apply);
-        return "main";
+        List<Subject> subject_apply = subjectService.getApplySubject(loginBean.getStudent_num());
+        model.addAttribute("subject_apply", subject_apply);
+
+//        model.addAttribute("allSubjectByUserIdBean", allSubjectByUserId);
+        return "/main";
     }
+
+    @GetMapping("/re_get")
+    public String re_get(@RequestParam("subject_num") int subject_num, Model model) {
+        List<Subject> allSubject = subjectService.findAllSubject();
+//        List<Subject> allSubjectByUserId = subjectService.findAllSubjectByUserId(loginBean.getStudent_num());
+        model.addAttribute("subjectBean", allSubject);
+        List<Subject> subject_apply = subjectService.getApplySubject(loginBean.getStudent_num());
+        model.addAttribute("subject_apply", subject_apply);
+
+//        model.addAttribute("allSubjectByUserIdBean", allSubjectByUserId);
+        return "/main";
+    }
+
 }

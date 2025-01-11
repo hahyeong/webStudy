@@ -20,6 +20,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (loginBean.isStudentLogin() == false) {
             String str = request.getContextPath();  //첫 경로 알아내서
+            request.setAttribute("loginBean", loginBean);
             response.sendRedirect(str + "/not_login"); //로그인 안되어있으면 이 주소로 강제이동
             return false;
         }

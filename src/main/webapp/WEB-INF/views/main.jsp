@@ -35,20 +35,38 @@
             </thead>
             <tbody>
             <c:forEach var="obj" items="${subjectBean}">
-                <tr>
-                    <td class="d-md-table-cell">${obj.subject_num}</td>
-                    <td class="d-md-table-cell">${obj.subject_name}</td>
-                    <td class="d-md-table-cell">${obj.subject_point}</td>
-                    <td class="d-md-table-cell">${obj.subject_cur_stu}/${obj.subject_max_stu}</td>
-                    <td class="d-md-table-cell">${obj.subject_day}</td>
-                    <td class="d-md-table-cell">${obj.subject_time}</td>
-                    <td class="d-md-table-cell">
-                        <form:form action="${root}apply_pro" method="post">
-                            <input type="hidden" name="subject_num" value="${obj.subject_num}"/>
-                            <button type="submit" class="btn btn-secondary">신청</button>
-                        </form:form>
-                    </td>
-                </tr>
+                <!-- 중복 체크를 위한 변수를 초기화 -->
+                <c:set var="isDuplicate" value="false" />
+                <c:forEach var="apply" items="${subject_apply}">
+                    <!-- 중복된 항목이 있는지 체크 -->
+                    <c:if test="${obj.subject_num == apply.subject_num}">
+                        <c:set var="isDuplicate" value="true" />
+                    </c:if>
+                </c:forEach>
+                <!-- 중복되지 않은 항목만 표시 -->
+                <c:if test="${!isDuplicate}">
+
+                    <tr>
+                        <td class="d-md-table-cell">${obj.subject_num}</td>
+                        <td class="d-md-table-cell">${obj.subject_name}</td>
+                        <td class="d-md-table-cell">${obj.subject_point}</td>
+                        <td class="d-md-table-cell">${obj.subject_cur_stu}/${obj.subject_max_stu}</td>
+                        <td class="d-md-table-cell">${obj.subject_day}</td>
+                        <td class="d-md-table-cell">${obj.subject_time}</td>
+                        <td class="d-md-table-cell">
+                            <c:choose>
+                                <c:when test="${obj.subject_cur_stu < obj.subject_max_stu}">
+                                    <a href="${root}apply_pro?subject_num=${obj.subject_num}" class="btn btn-primary">신청</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="${root}apply_pro?subject_num=${obj.subject_num}" class="btn btn-secondary disabled" aria-disabled="true" >신청</a>
+
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+                    </tr>
+
+                </c:if>
             </c:forEach>
             </tbody>
         </table>
@@ -70,8 +88,9 @@
                 <th class="d-md-table-cell" width="10%">수강신청</th>
             </tr>
             </thead>
+
             <tbody>
-            <c:forEach var="obj" items="${allSubjectByUserIdBean}">
+            <c:forEach var="obj" items="${subject_apply}">
                 <tr>
                     <td class="d-md-table-cell">${obj.subject_num}</td>
                     <td class="d-md-table-cell">${obj.subject_name}</td>
