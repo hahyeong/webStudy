@@ -29,4 +29,8 @@ public class SubjectDao {
         subjectMapper.updateSubjectCurStu(subject_num);
     }
 
+    public void deleteInfo(int subject_num, int student_num){
+        subjectMapper.deleteInfo(subject_num, student_num);
+    }
+
 }

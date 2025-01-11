@@ -1,6 +1,7 @@
 package kr.bit.mapper;
 
 import kr.bit.bean.Subject;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -22,4 +23,9 @@ public interface SubjectMapper {
 
     @Select("select * from subject_table")
     List<Subject> findAllSubject();
+
+    @Delete("delete from enrolled_subject_table " +
+            "where subject_num =#{subject_num} " +
+            "and student_num =#{student_num}")
+    void deleteInfo(int subject_num, int student_num);
 }

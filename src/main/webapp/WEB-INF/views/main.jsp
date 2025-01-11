@@ -76,7 +76,8 @@
                     <td class="d-md-table-cell">${obj.subject_day}</td>
                     <td class="d-md-table-cell">${obj.subject_time}</td>
                     <td class="d-md-table-cell">
-                        <a href="#" class="btn btn-danger">취소</a>
+                        <input type="hidden" value=""
+                        <a href="${root}delete?subject_num=${obj.subject_num}&student_num=${loginBean.student_num}" class="btn btn-secondary" class="btn btn-danger">취소</a>
                     </td>
                 </tr>
             </c:forEach>

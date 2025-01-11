@@ -5,6 +5,6 @@
 <c:set var="root" value="${pageContext.request.contextPath }/" />
 
 <script>
-    alert("로그인 해야합니다")
+    alert("잘못된 접근입니다")
     location.href='${root}login'
 </script>

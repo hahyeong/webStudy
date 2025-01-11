@@ -34,7 +34,7 @@ public class SubjectController {
 //        model.addAttribute("subject_apply", subject_apply);
         subjectService.insertEnroll(subject_num, student_num);
         subjectService.updateSubjectCurStu(subject_num);
-        return "main";
+        return "list";
     }
 
     @GetMapping("/list")
@@ -49,5 +49,18 @@ public class SubjectController {
 //        model.addAttribute("allSubjectByUserIdBean", allSubjectByUserId);
         model.addAttribute("allSubjectByUserIdBean", subject_apply);
         return "main";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("subject_num") int subject_num,
+            @RequestParam("student_num") int student_num,
+                         Model model) {
+
+        model.addAttribute("subject_num", subject_num);
+        model.addAttribute("student_num", student_num);
+
+        subjectService.deleteInfo(subject_num, student_num);
+
+        return "list";
     }
 }
