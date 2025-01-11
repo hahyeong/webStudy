@@ -99,7 +99,7 @@
                     <td class="d-md-table-cell">${obj.subject_day}</td>
                     <td class="d-md-table-cell">${obj.subject_time}</td>
                     <td class="d-md-table-cell">
-                        <a href="#" class="btn btn-danger">취소</a>
+                        <a href="${root}delete_pro?subject_num=${obj.subject_num}" class="btn btn-danger">취소</a>
                     </td>
                 </tr>
             </c:forEach>

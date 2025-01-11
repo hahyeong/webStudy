@@ -30,9 +30,11 @@ public class SubjectService {
         subjectDao.updateSubjectCurStu(subject_num);
     }
 
-    public void deleteInfo(int subject_num, int student_num){
-        subjectDao.deleteInfo(subject_num, student_num);
+    public void deleteEnroll(int student_num, int subject_num){
+        subjectDao.deleteEnroll(student_num,subject_num);
     }
 
-
+    public void updateSubjectCurStu_delete(int subject_num){
+        subjectDao.updateSubjectCurStu_delete(subject_num);
+    }
 }

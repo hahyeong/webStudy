@@ -20,4 +20,10 @@ public interface SubjectMapper {
 
     @Select("select * from subject_table")
     List<Subject> findAllSubject();
+
+    @Delete("delete from enrolled_subject_table where student_num = #{student_num} and subject_num = #{subject_num}")
+    void deleteEnroll(@Param("student_num") int student_num, @Param("subject_num") int subject_num);
+
+    @Update("update subject_table set subject_cur_stu = subject_cur_stu-1 where subject_num = #{subject_num}")
+    void updateSubjectCurStu_delete(int subject_num);
 }
