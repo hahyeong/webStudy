@@ -1,6 +1,11 @@
 package kr.bit.mapper;
 
 import kr.bit.bean.Student;
+import kr.bit.bean.Subject;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
+
 import org.apache.ibatis.annotations.Select;
 
 public interface StudentMapper {
