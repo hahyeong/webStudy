@@ -35,12 +35,10 @@ public class SubjectController {
     }
 
     @GetMapping("/list")
-    public String list(HttpServletRequest request, Model model) {
-        HttpSession session = request.getSession();
-        Student loginProcBean = (Student) session.getAttribute("loginProcBeanSession");
+    public String list(Model model) {
         List<Subject> allSubject = subjectService.findAllSubject();
-
         model.addAttribute("subjectBean", allSubject);
+
         List<Subject> subject_apply = subjectService.getApplySubject(loginBean.getStudent_num());
         model.addAttribute("subject_apply", subject_apply);
 
