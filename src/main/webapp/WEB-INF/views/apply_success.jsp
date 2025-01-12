@@ -12,7 +12,7 @@
 <body>
 
 <script>
-    alert("신청되었습니다.");
+    alert("신청 되었습니다.");
     location.href="${root}re_get?subject_num=${subject_num}";
 </script>
 

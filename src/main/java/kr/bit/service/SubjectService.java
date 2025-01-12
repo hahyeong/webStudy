@@ -23,10 +23,18 @@ public class SubjectService {
     }
 
     public void insertEnroll(int student_num, int subject_num){
+
         subjectDao.insertEnroll(student_num,subject_num);
     }
     public void updateSubjectCurStu(int subject_num){
         subjectDao.updateSubjectCurStu(subject_num);
     }
 
+    public void deleteEnroll(int student_num, int subject_num){
+        subjectDao.deleteEnroll(student_num,subject_num);
+    }
+
+    public void updateSubjectCurStu_delete(int subject_num){
+        subjectDao.updateSubjectCurStu_delete(subject_num);
+    }
 }

@@ -35,30 +35,34 @@ public class SubjectController {
     }
 
     @GetMapping("/list")
-    public String list(HttpServletRequest request, Model model) {
-        HttpSession session = request.getSession();
-        Student loginProcBean = (Student) session.getAttribute("loginProcBeanSession");
+    public String list(Model model) {
         List<Subject> allSubject = subjectService.findAllSubject();
-      
-//        List<Subject> allSubjectByUserId = subjectService.findAllSubjectByUserId(loginBean.getStudent_num());
         model.addAttribute("subjectBean", allSubject);
+
         List<Subject> subject_apply = subjectService.getApplySubject(loginBean.getStudent_num());
         model.addAttribute("subject_apply", subject_apply);
 
-//        model.addAttribute("allSubjectByUserIdBean", allSubjectByUserId);
         return "/main";
     }
 
     @GetMapping("/re_get")
     public String re_get(@RequestParam("subject_num") int subject_num, Model model) {
         List<Subject> allSubject = subjectService.findAllSubject();
-//        List<Subject> allSubjectByUserId = subjectService.findAllSubjectByUserId(loginBean.getStudent_num());
         model.addAttribute("subjectBean", allSubject);
         List<Subject> subject_apply = subjectService.getApplySubject(loginBean.getStudent_num());
         model.addAttribute("subject_apply", subject_apply);
 
-//        model.addAttribute("allSubjectByUserIdBean", allSubjectByUserId);
         return "/main";
     }
 
+    @GetMapping("/delete_pro")
+    public String deleteEnroll(@RequestParam("subject_num") int subject_num, Model model) {
+        model.addAttribute("subject_num", subject_num);
+        model.addAttribute("student_num", loginBean.getStudent_num());
+
+        subjectService.deleteEnroll( loginBean.getStudent_num(), subject_num);
+
+        subjectService.updateSubjectCurStu_delete(subject_num);
+        return "/delete_success";
+    }
 }

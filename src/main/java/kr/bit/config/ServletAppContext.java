@@ -99,7 +99,8 @@ public class ServletAppContext implements WebMvcConfigurer {
 
         LoginInterceptor loginInterceptor = new LoginInterceptor(loginBean);
         InterceptorRegistration registration = registry.addInterceptor(loginInterceptor);
-        registration.addPathPatterns("/list");
+        registration.addPathPatterns("/list", "/main", "/apply", "/delete", "/re_get");
+
     }
 
     @Bean

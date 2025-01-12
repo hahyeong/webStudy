@@ -29,4 +29,11 @@ public class SubjectDao {
         subjectMapper.updateSubjectCurStu(subject_num);
     }
 
+    public void deleteEnroll(int student_num, int subject_num){
+        subjectMapper.deleteEnroll(student_num,subject_num);
+    }
+
+    public void updateSubjectCurStu_delete(int subject_num){
+        subjectMapper.updateSubjectCurStu_delete(subject_num);
+    }
 }
