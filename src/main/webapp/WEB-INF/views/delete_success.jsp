@@ -6,5 +6,5 @@
 
 <script>
     alert("취소 되었습니다")
-    location.href="${root}re_get?subject_num=${subject_num}";
+    location.href="${root}list";
 </script>
