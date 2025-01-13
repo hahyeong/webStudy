@@ -5,6 +5,6 @@
 <c:set var="root" value="${pageContext.request.contextPath }/" />
 
 <script>
-    alert("취소되었습니다")
-    location.href="${root}re_get?subject_num=${subject_num}";
+    alert("취소 되었습니다")
+    location.href="${root}list";
 </script>

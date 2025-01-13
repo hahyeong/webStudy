@@ -45,16 +45,6 @@ public class SubjectController {
         return "/main";
     }
 
-    @GetMapping("/re_get")
-    public String re_get(@RequestParam("subject_num") int subject_num, Model model) {
-        List<Subject> allSubject = subjectService.findAllSubject();
-        model.addAttribute("subjectBean", allSubject);
-        List<Subject> subject_apply = subjectService.getApplySubject(loginBean.getStudent_num());
-        model.addAttribute("subject_apply", subject_apply);
-
-        return "/main";
-    }
-
     @GetMapping("/delete_pro")
     public String deleteEnroll(@RequestParam("subject_num") int subject_num, Model model) {
         model.addAttribute("subject_num", subject_num);

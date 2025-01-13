@@ -12,8 +12,8 @@
 <body>
 
 <script>
-    alert("신청되었습니다.");
-    location.href="${root}re_get?subject_num=${subject_num}";
+    alert("신청 되었습니다.");
+    location.href="${root}list";
 </script>
 
 </body>
