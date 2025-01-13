@@ -45,7 +45,6 @@ public class SubjectController {
         return "/main";
     }
 
-
     @GetMapping("/delete_pro")
     public String deleteEnroll(@RequestParam("subject_num") int subject_num, Model model) {
         model.addAttribute("subject_num", subject_num);
